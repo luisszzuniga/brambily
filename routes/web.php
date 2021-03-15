@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\MonstresController;
+use App\Http\Middleware\MonstresMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +28,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('/register', [AuthController::class, 'register']);
 
 Route::resource('menu', MenuController::class);
+
+Route::get('/monstres/{id}', [MonstresController::class, 'index'])->middleware(MonstresMiddleware::class)->name('test');
