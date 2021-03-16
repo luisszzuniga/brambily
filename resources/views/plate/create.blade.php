@@ -10,13 +10,13 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <form class="mt-3 mb-3 w-50 m-auto" action="{{ route('menu.plate.save') }}" method="POST">
                     @csrf
-                    <input class="form-control" type="text" placeholder="Nom" name="name">
-                    <textarea name="description" class="mt-2 form-control">Description</textarea>
+                    <input class="form-control" type="text" placeholder="Nom" name="name" required>
+                    <textarea name="description" class="mt-2 form-control" required>Description</textarea>
 
-                    <input type="int" class="form-control mt-2" placeholder="Prix" name="price">
+                    <input type="int" class="form-control mt-2" required placeholder="Prix" name="price">
 
                     <label class="mt-2" for="category_id">Catégorie: </label>
-                    <select name="category_id" class="form-control ">
+                    <select name="category_id" class="form-control" required>
                         @foreach($categories as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
