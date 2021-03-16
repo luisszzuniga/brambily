@@ -25,4 +25,32 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::get('/register', [AuthController::class, 'register']);
 
-Route::resource('menu', MenuController::class);
+Route::resource('menu', MenuController::class)->middleware('auth');
+
+Route::get('menu/create', [MenuController::class, 'createCategory'])->middleware('auth')->name('menu.createCategory');
+
+Route::post('menu/create', [MenuController::class, 'save'])->middleware('auth')->name('menu.category.save');
+
+Route::get('menu/category/{id}', [MenuController::class, 'seeCategory'])->middleware('auth')->name('menu.category.see');
+
+Route::get('menu/category/delete/{id}', [MenuController::class, 'deleteCategory'])->middleware('auth')->name('menu.category.delete');
+
+Route::get('menu/category/deleteConfirm/{id}', [MenuController::class, 'deleteCategoryConfirm'])->middleware('auth')->name('menu.category.deleteConfirm');
+
+Route::get('menu/category/edit/{id}', [MenuController::class, 'editCategory'])->middleware('auth')->name('menu.category.edit');
+
+Route::post('menu/category/save', [MenuController::class, 'saveEdit'])->middleware('auth')->name('menu.category.saveEdit');
+
+Route::get('menu/plate/see/{id}', [MenuController::class, 'seePlate'])->middleware('auth')->name('menu.plate.see');
+
+Route::get('menu/plate/delete/{id}', [MenuController::class, 'deletePlate'])->middleware('auth')->name('menu.plate.delete');
+
+Route::get('menu/plate/edit/{id}', [MenuController::class, 'editPlate'])->middleware('auth')->name('menu.plate.edit');
+
+Route::get('menu/plate/deleteConfirm/{id}', [MenuController::class, 'deletePlateConfirm'])->middleware('auth')->name('menu.plate.delete.confirm');
+
+Route::get('menu/plate/new', [MenuController::class, 'newPlate'])->middleware('auth')->name('menu.plate.new');
+
+Route::post('menu/plate/save', [MenuController::class, 'savePlate'])->middleware('auth')->name('menu.plate.save');
+
+Route::post('menu/plate/saveEdit', [MenuController::class, 'savePlateEdit'])->middleware('auth')->name('menu.plate.saveEdit');
