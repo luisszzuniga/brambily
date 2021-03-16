@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\MonstresController;
+use App\Http\Middleware\MonstresMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +27,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::get('/register', [AuthController::class, 'register']);
 
+<<<<<<< HEAD
 Route::resource('menu', MenuController::class)->middleware('auth');
 
 Route::get('menu/create', [MenuController::class, 'createCategory'])->middleware('auth')->name('menu.createCategory');
@@ -54,3 +57,4 @@ Route::get('menu/plate/new', [MenuController::class, 'newPlate'])->middleware('a
 Route::post('menu/plate/save', [MenuController::class, 'savePlate'])->middleware('auth')->name('menu.plate.save');
 
 Route::post('menu/plate/saveEdit', [MenuController::class, 'savePlateEdit'])->middleware('auth')->name('menu.plate.saveEdit');
+
