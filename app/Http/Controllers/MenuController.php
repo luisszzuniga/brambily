@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\MenuCategoryModel;
+use App\Models\PlateModel;
+
 
 class MenuController extends Controller
 {
@@ -13,7 +16,9 @@ class MenuController extends Controller
      */
     public function index()
     {
-        return view('menu.index');
+        $categories = MenuCategoryModel::all();
+        $plates = PlateModel::all();
+        return view('menu.index', compact('categories', 'plates'));
     }
 
     /**
@@ -21,64 +26,135 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createCategory()
     {
-        //
+        return view('menu.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function save()
     {
-        //
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+
+        $category = new MenuCategoryModel;
+        $category->name = $name;
+        $category->description = $description;
+        $category->save();
+
+        return redirect('menu');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function saveEdit()
     {
-        //
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+
+        $category = MenuCategoryModel::find($_POST['id']);
+        $category->name = $name;
+        $category->description = $description;
+        $category->save();
+
+        return redirect('menu');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function seePlate(int $id)
     {
-        //
+        $plate = PlateModel::find($id);
+
+        return view('plate.see', compact('plate'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function deletePlate(int $id)
     {
-        //
+        $plate = PlateModel::find($id);
+
+        return view('plate.delete', compact('plate'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function deletePlateConfirm(int $id)
     {
-        //
+        $plate = PlateModel::find($id);
+        $plate->delete();
+
+        return redirect('menu');
+    }
+
+    public function editPlate(int $id)
+    {
+        $plate = PlateModel::find($id);
+        $categories = MenuCategoryModel::all();
+
+        return view('plate.edit', compact('plate', 'categories'));
+    }
+
+    public function newPlate()
+    {
+        $categories = MenuCategoryModel::all();
+        return view('plate.create', compact('categories'));
+    }
+
+    public function seeCategory(int $id)
+    {
+        $category = MenuCategoryModel::find($id);
+        $plates = PlateModel::all();
+
+        return view('menu.see', compact('category', 'plates'));
+    }
+
+    public function deleteCategory(int $id)
+    {
+        $category = MenuCategoryModel::find($id);
+
+        return view('menu.delete', compact('category'));
+    }
+
+    public function deleteCategoryConfirm(int $id)
+    {
+        $category = MenuCategoryModel::find($id);
+        $category->delete();
+
+        return redirect('menu');
+    }
+
+    public function editCategory(int $id)
+    {
+        $category = MenuCategoryModel::find($id);
+
+        return view('menu.edit', compact('category'));
+    }
+
+    public function savePlate()
+    {
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $price = $_POST['price'];
+        $categoryId = $_POST['category_id'];
+
+        $plate = new PlateModel;
+        $plate->name = $name;
+        $plate->description = $description;
+        $plate->price = $price;
+        $plate->category_id = $categoryId;
+        $plate->save();
+
+        return redirect('menu');
+    }
+
+    public function savePlateEdit()
+    {
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $price = $_POST['price'];
+        $categoryId = $_POST['category_id'];
+        $id = $_POST['id'];
+
+        $plate = PlateModel::find($id);
+        $plate->name = $name;
+        $plate->description = $description;
+        $plate->price = $price;
+        $plate->category_id = $categoryId;
+        $plate->save();
+
+        return redirect('menu');
     }
 }
