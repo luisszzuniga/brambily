@@ -9,11 +9,7 @@ use App\Models\PlateModel;
 
 class MenuController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $categories = MenuCategoryModel::all();
@@ -21,11 +17,6 @@ class MenuController extends Controller
         return view('menu.index', compact('categories', 'plates'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function createCategory()
     {
         return view('menu.create');

@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MenuController;
-use App\Http\Controllers\MonstresController;
-use App\Http\Middleware\MonstresMiddleware;
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +17,7 @@ use App\Http\Middleware\MonstresMiddleware;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [IndexController::class, 'index'])->name('brambily.index');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
@@ -27,7 +25,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::get('/register', [AuthController::class, 'register']);
 
-<<<<<<< HEAD
+
 Route::resource('menu', MenuController::class)->middleware('auth');
 
 Route::get('menu/create', [MenuController::class, 'createCategory'])->middleware('auth')->name('menu.createCategory');
@@ -58,3 +56,20 @@ Route::post('menu/plate/save', [MenuController::class, 'savePlate'])->middleware
 
 Route::post('menu/plate/saveEdit', [MenuController::class, 'savePlateEdit'])->middleware('auth')->name('menu.plate.saveEdit');
 
+
+
+//COMMANDES
+
+Route::resource('orders', OrderController::class);
+
+Route::get('orders/see/{id}', [OrderController::class, 'see'])->name('orders.see');
+
+Route::get('orders/archive/{id}', [OrderController::class, 'archive'])->name('orders.archive');
+
+Route::get('orders/archiveConfirm/{id}', [OrderController::class, 'archiveConfirm'])->name('orders.archive.confirm');
+
+Route::get('orders/old/{id}', [OrderController::class, 'old'])->name('orders.old');
+
+Route::get('orders/unarchive/{id}', [OrderController::class, 'unarchive'])->name('orders.unarchive');
+
+Route::post('order', [OrderController::class, 'order'])->name('index.order');

@@ -1,7 +1,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>{{config('app.name');}}</title>
+    <title>{{config('app.name')}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="Description" content="Le Brambily Restaurant Mauron">
@@ -19,25 +19,117 @@
     <meta property="og:image" content="https://NOM_DU_SITE_A_DEFINIR.fr/img/logo/open_graph.jpg"/><!--img à définir-->
     <meta property="og:description" content="Le Brambily Restaurant Mauron"/>
     <meta property="og:url" content="https://NOM_DU_SITE_A_DEFINIR.fr/"/>
+
+
+    <!-- LINKS CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fontawesome.com/releases/v5.10.0/css/all.css">
-    <link rel="stylesheet" href="{{ asset('css/normalize.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+    
 </head>
-<body id="body">
-    <main>
-        <section class="animation">
-            <div class="restaurant">
+<body>
+
+@if(Session::has('succes'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+ {{Session::get('succes')}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif
+
+<header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Le Brambily</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#" onclick="scrollAnimation(0)">Accueil</a>
+                  </li>
+                  <li class="nav-item"> 
+                    <a class="nav-link" href="#" onclick="scrollAnimation(1801)">Nos Bières</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="scrollAnimation(2701)">Notre Menu</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="scrollAnimation(3401)">Commander & Contact</a>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div class="devanture" id="devanture">
-                <div class="portes">
-                    <img src="images/porte-gauche.svg" id="porteGauche" class="porteGauche" alt="">
-                    <img src="images/porte-droite.svg" id="porteDroite" class="porteDroite" alt="">
+          </nav>
+    </header>
+
+    <main class="animation">
+        <div class="bar" id="bar">
+            <img class="waiter" id="waiter" src="images/waiter.png" alt="">
+            <div class="carte-bieres" id="carteBieres">
+                <h2 class="text-center pt-3">Nos bières</h2>
+                <ul class="carte-liste">
+                    @foreach($plates as $plate)
+                        @if($plate->category_id == 13)
+                            <li>{{ $plate->name }} <span class="badge bg-secondary prix">{{ $plate->price }} €</span></li>   
+                        @endif 
+                    @endforeach
+                </ul>
+            </div>
+            <div class="menu" id="menu">
+                <h2 class="text-center pt-3">Notre menu</h2>
+                <ul class="carte-liste">
+                   
+                </ul>
+            </div>
+            <div class="order" id="order">
+                <section class="ordernow">
+                    <h3>Commandez maintenant!</h3>
+                    <form action="{{ route('index.order') }}" method="POST">
+                      @csrf
+                      <input name="name" type="text" class="form-control" placeholder="Nom et Prénom" required>
+                      <input type="number" name="phone" class="form-control mt-3" required placeholder="Numéro de téléphone">
+                      <textarea name="order" class="form-control mt-3"  cols="30" rows="10" required>Votre commande ici...</textarea>
+
+                      <button class="btn btn-secondary mt-3">Commander</button>
+                    </form>
+                </section>
+                <section>
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2665.404545653584!2d-2.286105694139875!3d48.08313547697515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x480e4c938064e71b%3A0x5bb519556129cddf!2sH%C3%B4tel%20le%20Brambily!5e0!3m2!1sfr!2sfr!4v1615986790654!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                  <aside class="adress">
+                    <h3>Restaurant Le Brambily</h3>
+                    <p><i class="fas fa-map-signs mr-3"></i>  14 place Henri Thébault, 56430 Mauron</p>
+                    <p><i class="fas fa-phone mr-3"></i>  02 30 19 01 41</p>
+                  </aside>
+                  <footer>
+                    <p class="footer-text">
+                    Le Brambily 2021 - <a class="mentions-legales" href="">Mentions Légales</a>
+                    </p>
+
+                  </footer>
+                </section>
+            </div>
+        </div>
+        <div class="portes">
+                <div class="porte porte-gauche" id="porteGauche">
+
                 </div>
-            </div>
-        </section>
+                <div class="porte porte-droite" id="porteDroite">
+                    
+                </div>
+        </div>
+       <section class="devanture" id="devanture">
+            
+       </section>   
     </main>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js" integrity="sha512-8E3KZoPoZCD+1dgfqhPbejQBnQfBXe8FuwL4z/c8sTrgeDMFEnoyTlH3obB4/fV+6Sg0a0XF+L/6xS4Xx1fUEg==" crossorigin="anonymous"></script>
-    <script src="js/app.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
