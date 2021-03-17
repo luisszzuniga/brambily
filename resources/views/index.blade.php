@@ -95,7 +95,7 @@
                       @csrf
                       <input name="name" type="text" class="form-control" placeholder="Nom et Prénom" required>
                       <input type="number" name="phone" class="form-control mt-3" required placeholder="Numéro de téléphone">
-                      <textarea name="order" class="form-control mt-3"  cols="30" rows="10" required>Votre commande ici...</textarea>
+                      <textarea name="order" class="form-control mt-3"  cols="30" rows="7" required>Votre commande ici...</textarea>
 
                       <button class="btn btn-secondary mt-3">Commander</button>
                     </form>
@@ -107,13 +107,14 @@
                     <p><i class="fas fa-map-signs mr-3"></i>  14 place Henri Thébault, 56430 Mauron</p>
                     <p><i class="fas fa-phone mr-3"></i>  02 30 19 01 41</p>
                   </aside>
-                  <footer>
+                  
+                </section>
+                <footer>
                     <p class="footer-text">
                     Le Brambily 2021 - <a class="mentions-legales" href="">Mentions Légales</a>
                     </p>
 
                   </footer>
-                </section>
             </div>
         </div>
         <div class="portes">
