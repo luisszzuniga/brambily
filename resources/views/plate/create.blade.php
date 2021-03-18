@@ -14,6 +14,7 @@
                     <textarea name="description" class="mt-2 form-control" required>Description</textarea>
 
                     <input type="int" class="form-control mt-2" required placeholder="Prix" name="price">
+                    <input class="form-control mt-2" type="text" placeholder="URL image" name="picture" required>
 
                     <label class="mt-2" for="category_id">Catégorie: </label>
                     <select name="category_id" class="form-control" required>

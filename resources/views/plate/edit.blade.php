@@ -15,6 +15,8 @@
 
                     <input type="int" class="form-control mt-2" required placeholder="Prix" name="price" value="{{ $plate->price }}">
 
+                    <input class="form-control" type="text" name="picture" placeholder="ULR d'image" value="{{$plate->picture}}" required>
+
                     <label class="mt-2" for="category_id">Catégorie: </label>
                     <select name="category_id" class="form-control" required>
                         @foreach($categories as $category)

@@ -120,12 +120,14 @@ class MenuController extends Controller
         $description = $_POST['description'];
         $price = $_POST['price'];
         $categoryId = $_POST['category_id'];
+        $picture = $_POST['picture'];
 
         $plate = new PlateModel;
         $plate->name = $name;
         $plate->description = $description;
         $plate->price = $price;
         $plate->category_id = $categoryId;
+        $plate->picture = $picture;
         $plate->save();
 
         return redirect('menu');
@@ -138,12 +140,14 @@ class MenuController extends Controller
         $price = $_POST['price'];
         $categoryId = $_POST['category_id'];
         $id = $_POST['id'];
+        $picture = $_POST['picture'];
 
         $plate = PlateModel::find($id);
         $plate->name = $name;
         $plate->description = $description;
         $plate->price = $price;
         $plate->category_id = $categoryId;
+        $plate->picture = $picture;
         $plate->save();
 
         return redirect('menu');

@@ -151,7 +151,7 @@
 			</div>
 		</header>
 
-		<main class="mobile-main">
+		<main class="mobile-main" id="mobileMain">
 			<div class="container">
 				<section class="bieres">
 					<h2 id="bieresAnchor">Les bières</h2>
@@ -159,6 +159,7 @@
 							@foreach($plates as $plate)
 								@if($plate->category_id === 13)
 									<div class="col-11 col-sm-5 mobile-card">
+										<div class="plate-image" style="background-image: url('{{$plate->picture}}');"></div>
 										<h4>{{$plate->name}}</h4>
 										<p>{{$plate->description}}</p>
 										<span>{{$plate->price}} €</span>
@@ -177,6 +178,7 @@
 							@foreach($plates as $plate)
 								@if($plate->category_id === $category->id)
 									<div class="col-11 col-sm-5 mobile-card">
+											<div class="plate-image" style="background-image: url('{{$plate->picture}}');"></div>
 										<h4>{{$plate->name}}</h4>
 										<p>{{$plate->description}}</p>
 										<span>{{$plate->price}} €</span>
@@ -229,7 +231,7 @@
 
 
 
-		<script src="{{ asset('js/app.js') }}"></script>
+		<script src="{{ asset('js/index.js') }}"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 	</body>
 </html>

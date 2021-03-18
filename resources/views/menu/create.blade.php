@@ -12,7 +12,7 @@
                     @csrf
                     <input class="form-control" type="text" required placeholder="Nom" name="name">
                     <textarea name="description" required class="mt-2 form-control">Description</textarea>
-
+                
                     <button class="btn btn-primary mt-2 float-right mb-3">Ajouter</button>
                 </form>
             </div>

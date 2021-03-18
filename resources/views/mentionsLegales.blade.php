@@ -1,9 +1,10 @@
 @extends('template')
 
 @section('content')
-<section class="container">
-    <h1 class="text-center">Mentions Légales</h1>
-    <a href="{{ route('brambily.index') }}" class=""><i class="fas fa-arrow-left"></i>Accueil</a>
+<section class="container mentions-legales" >
+    <img class="logo" src="{{ asset('images/logo.svg') }}" alt="">
+    <h1>Mentions Légales <span class="ml-3"><a href="{{ route('brambily.index') }}" class=""><i class="fas fa-arrow-left pr-2"></i>Accueil</a></span></h1>
+    
     <article>
         <h2>Editeur du site Internet</h2>
             <p>Le Brambily</p>
