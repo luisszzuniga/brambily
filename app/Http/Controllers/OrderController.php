@@ -62,7 +62,7 @@ class OrderController extends Controller
         $order->phone = $phone;
         $order->save();
 
-        Session::flash('succes', 'Votre commande a bien été prise en compte! Vous pouvez venir ');
+        Session::flash('succes', 'Votre commande a bien été prise en compte! Vous pouvez venir la récupérer d\'ici peu.');
 
         return redirect('/');
     }

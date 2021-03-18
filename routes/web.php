@@ -73,3 +73,7 @@ Route::get('orders/old/{id}', [OrderController::class, 'old'])->name('orders.old
 Route::get('orders/unarchive/{id}', [OrderController::class, 'unarchive'])->name('orders.unarchive');
 
 Route::post('order', [OrderController::class, 'order'])->name('index.order');
+
+
+// MENTIONS LEGALES
+Route::get('/mentions-legales', [IndexController::class, 'mentionsLegales'])->name('index.mentionsLegales');

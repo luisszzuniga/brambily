@@ -272,6 +272,7 @@ input
 	width: 100%;
 }
 
+
 .neon
 {
 	position: absolute;
@@ -285,6 +286,39 @@ input
 	animation: neon 2s infinite;
 }
 
+@media screen and (max-width: 1300px)
+{
+	.neon
+	{
+		right: 90px;
+	}
+}
+@media screen and (max-width: 1220px)
+{
+	.neon
+	{
+		right: 70px;
+	}
+}
+@media screen and (max-width: 1150px)
+{
+	.neon
+	{
+		right: 50px;
+	}
+}
+@media screen and (max-width: 1080px)
+{
+	.neon
+	{
+		right: 30px;
+		height: 350px;
+		width: 35s0px;
+		top: 130px;
+	}
+}
+
+
 @keyframes neon 
 {
 	0% {background-image: url('../images/neon/1.png');}
@@ -296,4 +330,313 @@ input
 	84% {background-image: url('../images/neon/7.png');}
 	100% {background-image: url('../images/neon/8.png');}
 
+}
+
+.mobile-header
+{
+	display: none;
+	background-image: url('../images/ardoise.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	padding-bottom: 80px;
+	position: relative;
+
+}
+
+.img-link
+{
+	display: block;
+	width: 200px;
+	margin: auto;
+	padding-top: 20px;
+}
+
+.mobile-nav-span
+{
+	display: inline-block;
+	line-height: 60px;
+	padding-left: 15px;
+	color: white;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 13px;
+}
+
+.mobile-nav-burger
+{
+	color: white;
+	font-size: 24px;
+	padding-right: 15px;
+}
+
+.mobile-nav-burger i 
+{
+	line-height: 60px;
+	animation: 400ms ease;
+}
+
+.mobile-nav-burger i:hover
+{
+	cursor: pointer;
+}
+
+.mobile-headers
+{
+	margin-top: 100px;
+}
+
+.mobile-headers h1, .mobile-headers h4
+{
+	text-align: center;
+	font-family: 'Courgette', cursive;
+	color: white;
+}
+
+
+/* MEDIA QUAERIES */
+
+@media screen and (max-width: 991px)
+{
+	.animation
+	{
+		display: none;
+	}
+
+	html
+	{
+		height: auto;
+	}
+
+	body
+	{
+		height: 300vh;
+	}
+
+	nav
+	{
+		display: none!important;
+	}
+
+	.mobile-header
+	{
+		display: block;
+	}
+
+	.mobile-nav 
+	{
+		display: block!important;
+	}
+
+	.mobile-main
+	{
+		display: block!important;
+	}
+
+	.mobile-menu
+	{
+		display: block!important;
+	}
+}
+
+
+
+.mobile-nav
+{
+	width: 100%;
+	height: 60px;
+	margin-top: 20px;
+	border-top: 1px solid rgba(255,255,255,0.2);
+	border-bottom: 1px solid rgba(255,255,255,0.2);
+	display: flex!important;
+	justify-content: space-between;
+	transition: 500ms ease;
+}
+
+.menu-left
+{
+	background-color: black;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	max-width: 100%;
+	width: 0;
+	z-index: 1200;
+	transition: 400ms ease;
+	display: none;
+}
+
+.menu-left ul
+{
+	padding-left: 15px;
+	padding-top: 30px;
+}
+
+.menu-left li
+{
+	list-style: none;
+	padding-bottom: 20px;
+}
+
+.menu-left li a
+{
+	color: white;
+	font-size: 14px;
+	font-family: 'Montserrat', sans-serif;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+.close-button
+{
+	color: white;
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	font-size: 20px;
+}
+
+.close-button:hover
+{
+	cursor: pointer;
+}
+
+.menu-min
+{
+	position: fixed;
+	height: 50px;
+	border: none;
+	background-color: black;
+	top: 0;
+	left: 0;
+	transition: 500ms ease;
+	margin-top: 0;
+}
+
+
+.menu-min span img
+{
+	height: 30px;
+	transform: translateY(35%);
+}
+
+.mobile-main
+{
+	display: none;
+	width: 100%;
+}
+
+.mobile-main h2
+{
+	font-family: 'Montserrat', sans-serif;
+	text-align: center;
+	margin-top: 45px;
+	font-weight: 700;
+}
+
+.mobile-card
+{
+	border: 1px solid #e6e6e6;
+	border-radius: 5px;
+	transition: all 500ms ease;
+	margin-bottom: 20px;
+	padding: 30px 20px;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.mobile-card span 
+{
+	position: relative;
+}
+
+.mobile-card:hover
+{
+	background-color: #e6e6e6;
+}
+
+.mobile-row
+{
+	justify-content: space-evenly;
+	margin-top: 35px;
+}
+
+.mobile-menu
+{
+	display: none;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.mobile-menu h5
+{
+	text-align: center;
+	margin-top: 40px;
+}
+
+.contact
+{
+	background-color: #8F0000;
+	color: white;
+}
+
+.contact h2
+{
+	padding: 35px;
+}
+
+.contact form
+{
+	padding-bottom: 50px;
+}
+
+.contact iframe
+{
+	width: 100%;
+	height: 350px;
+}
+
+.contact .adress
+{
+	height: auto;
+}
+
+.mobile-footer
+{
+	position: relative;
+}
+
+.mobile-footer .footer-text
+{
+	margin: 0;
+}
+
+.mobile-nav-span img
+{
+	height: 40px;
+	transform: translateY(25%);
+}
+
+.navbar-brand img
+{
+	height: 30px;
+}
+
+.titre
+{
+	position: absolute;
+	top: 100px;
+	color: white;
+	font-family: 'Courgette', sans-serif;
+	left: 30px;
+	display: inline-block;
+	background-color: black;
+	padding: 10px 30px;
+	border-radius: 5px;
+}
+
+.carte-liste p 
+{
+	font-family: 'Montserrat', sans-serif;
+	font-size: 17px;
+	color: gray;
+	padding-left: 30px;
 }

@@ -16,4 +16,9 @@ class IndexController extends Controller
 
         return view('index', compact('categories', 'plates'));
     }
+
+    public function mentionsLegales()
+    {
+        return view('mentionsLegales');
+    }
 }

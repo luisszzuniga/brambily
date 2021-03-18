@@ -5,8 +5,22 @@ var menuAppear = 2700;
 var orderAppear = 3400;
 
 
+
 window.addEventListener('scroll', function (event) {
   var scrollPosition = window.scrollY;
+
+  if(scrollPosition > 230)
+  {
+    var mobileMenu = document.getElementById('mobileNav');
+    
+    mobileMenu.classList.add('menu-min');
+  }
+  else
+  {
+    var mobileMenu = document.getElementById('mobileNav');
+
+    mobileMenu.classList.remove('menu-min');
+  }
 
   if (scrollPosition === 0) {
     var porteDroite = document.getElementById('porteDroite');
@@ -91,6 +105,28 @@ function scrollAnimation(target) {
 }
 
 scrollAnimation(0);
+
+function menuBurger()
+{
+  var menu = document.getElementById('menu-left');
+  var style = window.getComputedStyle(menu);
+
+  var button = document.getElementById('burgerButton');
+
+  if(style.width == "0px")
+  {
+    menu.style.display = "block";
+    menu.style.width = "300px";
+    button.innerHTML = "<i onclick='menuBurger()' class='fas fa-times'></i>";
+  }
+  else
+  {
+    menu.style.display = "none";
+    menu.style.width = "0px";
+    button.innerHTML = "<i onclick='menuBurger()' class='fas fa-bars'></i>";
+  }
+  
+}
 
 
 
