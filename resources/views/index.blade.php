@@ -122,17 +122,17 @@
 
 		<div class="menu-left" id="menu-left">
 			<ul>
-				<li><a href="#">Accueil</a></li>
-				<li><a href="#bieresAnchor">Les Bières</a></li>
-				<li><a href="#menuAnchor">Le Menu</a></li>
-				<li><a href="#contactAnchor">Contact & Commandes</a></li>
+				<li><a href="#" onclick='menuBurger()'>Accueil</a></li>
+				<li><a href="#bieresAnchor" onclick='menuBurger()'>Les Bières</a></li>
+				<li><a href="#menuAnchor" onclick='menuBurger()'>Le Menu</a></li>
+				<li><a href="#contactAnchor" onclick='menuBurger()'>Contact & Commandes</a></li>
 			</ul>
 			<i onclick='menuBurger()' class='fas fa-times close-button'></i>
 		</div>
 
 		<header class="mobile-header">
 			<a href="#" class="img-link">
-				<img src="{{ asset('images/logo.svg') }}" alt="">
+				<img src="{{ asset('images/biglogowhite.svg') }}" alt="">
 			</a>
 			<div class="container">
 				<div id="contour">
