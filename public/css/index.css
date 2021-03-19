@@ -638,13 +638,15 @@ input
 {
 	position: absolute;
 	top: 100px;
+	left: 49%;
+	transform: translateX(-50%);
 	color: white;
 	font-family: 'Montserrat', sans-serif;
-	left: 30px;
 	display: inline-block;
 	background-color: black;
 	padding: 20px 50px;
 	font-weight: 700;
+	font-size: 30px;
 }
 
 .titre::after
